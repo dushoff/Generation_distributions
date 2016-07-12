@@ -34,6 +34,21 @@ lognormal.filtered.Rout: funhist.R
 %.filtered.Rout: %.Rout funhist.Rout filtered.R
 	$(run-R)
 
+contour.Rout: par.R contour.R
+	$(run-R)
+
+%.curve.Rout: %.ga.Rout par.R curve.R
+	$(run-R)
+
+%.ga.Rout: %.Rout gamma.R
+	$(run-R)
+
+%.hist.Rout: %.Rout hist.R
+	$(run-R)
+
+%.plain.Rout: %.curve.Rout par.R plain.R
+	$(run-R)
+
 newtest.Rout: lognormal.Rout newfun.Rout filtered.R
 	$(run-R)
 
@@ -49,5 +64,5 @@ simple.Rout: simple.R
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
 
-# -include $(ms)/wrapR.mk
+-include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
