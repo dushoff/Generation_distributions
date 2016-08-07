@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: notarget
+target pngtarget pdftarget vtarget acrtarget: steps.wide.pdf 
 
 ##################################################################
 
@@ -18,6 +18,12 @@ include stuff.mk
 ## Content
 
 Sources += $(wildcard *.R)
+
+## If generations are faster, steps are smaller and R0 is lower
+steps.Rout: steps.R
+
+## Wide version possibly to include in the LW_update paper (~/git/generation_interval_moments/)
+steps.wide.pdf: steps.R
 
 exponential.Rout: lognormal.Rout
 
