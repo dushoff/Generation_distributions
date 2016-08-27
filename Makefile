@@ -22,7 +22,7 @@ Sources += $(wildcard *.R)
 ## If generations are faster, steps are smaller and R0 is lower
 steps.Rout: steps.R
 
-## Wide version possibly to include in the LW_update paper (~/git/generation_interval_moments/)
+## Wide version possibly to include in the WL_update paper (~/git/generation_interval_moments/)
 steps.wide.pdf: steps.R
 
 exponential.Rout: lognormal.Rout
