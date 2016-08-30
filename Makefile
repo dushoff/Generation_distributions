@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: steps.wide.pdf 
+target pngtarget pdftarget vtarget acrtarget: paper.filtered.Rout 
 
 ##################################################################
 
@@ -19,11 +19,27 @@ include stuff.mk
 
 Sources += $(wildcard *.R)
 
+## Conceptual picture (idea ripped off from whom?)
 ## If generations are faster, steps are smaller and R0 is lower
 steps.Rout: steps.R
 
 ## Wide version possibly to include in the WL_update paper (~/git/generation_interval_moments/)
 steps.wide.pdf: steps.R
+
+##################################################################
+
+# Pictures of filtered mean stuff
+
+# funhist has histogram functions
+# filtered.R is expecting some sort of calculated objects
+
+# Need to keep working on updating this once I have access to the goshdarned missing file (assuming this ever happens!)
+
+%.filtered.Rout: %.Rout funhist.Rout filtered.R
+	$(run-R)
+
+paper.filtered.Rout: lognormal.Rout funhist.Rout paper.R
+	$(run-R)
 
 exponential.Rout: lognormal.Rout
 
@@ -33,13 +49,9 @@ contour.Rout: contour.R
 
 condition.Rout: condition.R
 
-test.Rout: test.R
-
 lognormal.filtered.Rout: funhist.R
 
-%.filtered.Rout: %.Rout funhist.Rout filtered.R
-	$(run-R)
-
+# Confusing conceptual diagram with diagonal arrow (replaced by a pair of diagrams)
 contour.Rout: par.R contour.R
 	$(run-R)
 
