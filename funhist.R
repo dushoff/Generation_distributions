@@ -1,5 +1,11 @@
 funZones = function()
 {
+	zones=matrix(c(0,2,3,1), ncol=2, byrow=TRUE)
+	layout(zones, widths=c(1/5,4/5), heights=c(1/5,4/5))
+}
+
+rightZones = function()
+{
 	zones=matrix(c(2,0,1,3), ncol=2, byrow=TRUE)
 	layout(zones, widths=c(4/5,1/5), heights=c(1/5,4/5))
 }
@@ -32,7 +38,7 @@ funHist = function(x, f, parms=NULL , finv=NULL, means=TRUE, top=NULL)
 	par(mar=c(3,0,1,1))
 	barplot(yhist$counts
 		, axes=FALSE
-		# , xlim=c(top, 0)
+		, xlim=c(top, 0)
 		, space=0, horiz=TRUE
 	)
 }
