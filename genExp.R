@@ -1,3 +1,4 @@
+dev.off(); pdf(pdfname, height=4)
 library(ggplot2); theme_set(theme_bw())
 library(tidyr)
 
