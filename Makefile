@@ -41,6 +41,8 @@ steps.wide.pdf: steps.R
 paper.filtered.Rout: lognormal.Rout funhist.Rout paper.R
 	$(run-R)
 
+paper.filtered.wide.pdf:
+
 exponential.Rout: lognormal.Rout
 
 exponential.filtered.Rout: exponential.R
