@@ -2,10 +2,9 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: lognormal.curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: gamma.Rout 
 
 ##################################################################
-
 
 # make files
 
@@ -30,39 +29,38 @@ steps.wide.pdf: steps.R
 contour.Rout: par.R contour.R
 	$(run-R)
 
+## Less-confusing two-diagram version
+condition.Rout: condition.R
+
 ##################################################################
 
 ## Simulations for downstream use
 
+## Some sort of realistic-ish generation interval based on gamma assumptions
 simple.Rout: simple.R
 
+## And now based on lognormal stuff
 lognormal.Rout: lognormal.R
+
+## This one is weird; seems to make an exponential with parameters matched to the specific lognormal
+exponential.Rout: lognormal.Rout
 
 ##################################################################
 
-gamma.Rout: gamma.R
 # Pictures of filtered mean stuff
 
 # funhist has histogram functions
-# filtered.R is expecting some sort of calculated objects
-
-# Need to keep working on updating this once I have access to the goshdarned missing file (assuming this ever happens!)
+# filtered.R is expecting calculated objects (Simulations, above)
 
 %.filtered.Rout: %.Rout funhist.Rout filtered.R
 	$(run-R)
 
+lognormal.filtered.Rout: filtered.R
 paper.filtered.Rout: lognormal.Rout funhist.Rout paper.R
 	$(run-R)
-
 paper.filtered.wide.pdf:
 
-exponential.Rout: lognormal.Rout
-
 exponential.filtered.Rout: exponential.R
-
-contour.Rout: contour.R
-
-condition.Rout: condition.R
 
 lognormal.filtered.Rout: funhist.R
 

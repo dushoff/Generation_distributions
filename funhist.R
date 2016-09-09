@@ -53,7 +53,7 @@ funHist = function(x, f, parms=NULL , finv=NULL, means=TRUE, top=NULL)
 ### Old version; nothing wrong with it I guess
 funhist = function(x, f, parms=NULL , finv=NULL, means=TRUE, top=NULL)
 {
-	funZones()
+	leftZones()
 	funHist(x, f, parms, finv, means, top)
 }
 
