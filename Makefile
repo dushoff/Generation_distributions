@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: paper.filtered.Rout 
+target pngtarget pdftarget vtarget acrtarget: genExp.Rout 
 
 ##################################################################
 
@@ -42,8 +42,12 @@ simple.Rout: simple.R
 ## And now based on lognormal stuff
 lognormal.Rout: lognormal.R
 
-## This one is weird; seems to make an exponential with parameters matched to the specific lognormal
+## Make an exponential with parameters matched to the specific lognormal
 exponential.Rout: lognormal.Rout
+
+## Make a single-gamma approximation to a simulation
+%.ga.Rout: %.Rout gamma.R
+	$(run-R)
 
 ##################################################################
 
@@ -60,26 +64,28 @@ paper.filtered.Rout: lognormal.Rout funhist.Rout paper.R
 	$(run-R)
 paper.filtered.wide.pdf:
 
+# Exponential version used in talk; not so clear if it's pedagogic
 exponential.filtered.Rout: exponential.R
 
-lognormal.filtered.Rout: funhist.R
+# Plain histograms (compare sim and its single-gamma approximation)
+lognormal.hist.Rout:
+lognormal.ga.hist.Rout:
+%.hist.Rout: %.Rout hist.R
+	$(run-R)
+
+######################################################################
 
 ## Curves showing approximations across a range
 lognormal.curve.Rout: curve.R
 %.curve.Rout: %.ga.Rout par.R curve.R
 	$(run-R)
 
-%.ga.Rout: %.Rout gamma.R
-	$(run-R)
-
-%.hist.Rout: %.Rout hist.R
-	$(run-R)
-
+## Plain version uses mean and range from Ebola, but not approximations. Seems kind of hasty.
 %.plain.Rout: %.curve.Rout par.R plain.R
 	$(run-R)
 
-newtest.Rout: lognormal.Rout newfun.Rout filtered.R
-	$(run-R)
+# Just a general example of the generalized exponential
+genExp.Rout: genExp.R
 
 ######################################################################
 
