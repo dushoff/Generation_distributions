@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: genExp.Rout 
+target pngtarget pdftarget vtarget acrtarget: EbolaCurve.Rout 
 
 ##################################################################
 
@@ -76,9 +76,20 @@ lognormal.ga.hist.Rout:
 ######################################################################
 
 ## Curves showing approximations across a range
+
+# Functions for calculating R using Euler's equation
+euler.Rout: euler.R
+
+# Some parameters from the Ebola epidemic
+WHO.Rout: WHO.R
+
+# Generic example that was hijacked for a talk
 lognormal.curve.Rout: curve.R
 %.curve.Rout: %.ga.Rout par.R curve.R
 	$(run-R)
+
+# New example
+EbolaCurve.Rout: lognormal.ga.Rout euler.Rout WHO.Rout EbolaCurve.R
 
 ## Plain version uses mean and range from Ebola, but not approximations. Seems kind of hasty.
 %.plain.Rout: %.curve.Rout par.R plain.R
