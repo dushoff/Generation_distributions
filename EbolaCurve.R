@@ -1,6 +1,3 @@
-
-par(cex=1.5)
-
 rho <- seq(0.1, 2.0, by=0.1)
 
 baseplot <- function(){
@@ -8,7 +5,7 @@ baseplot <- function(){
 		, type="l"
 		, ylim=c(1, 5)
 		, xlab = "Exponential growth rate (per month)"
-		, ylab = "Effective reproductive number R"
+		, ylab = "R"
 	)
 }
 

@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: EbolaCurve.Rout 
+target pngtarget pdftarget vtarget acrtarget: EbolaCurve.flat.Rout 
 
 ##################################################################
 
@@ -89,14 +89,20 @@ lognormal.curve.Rout: curve.R
 	$(run-R)
 
 # New example
-EbolaCurve.Rout: lognormal.ga.Rout euler.Rout WHO.Rout EbolaCurve.R
+EbolaCurve.cex.Rout: lognormal.ga.Rout euler.Rout WHO.Rout cex.R EbolaCurve.R
+	$(run-R)
+
+# Paper now uses this flatter version
+EbolaCurve.flat.Rout: lognormal.ga.Rout euler.Rout WHO.Rout flat.R EbolaCurve.R
+	$(run-R)
 
 ## Plain version uses mean and range from Ebola, but not approximations. Seems kind of hasty.
 %.plain.Rout: %.curve.Rout par.R plain.R
 	$(run-R)
 
-# Just a general example of the generalized exponential
-genExp.Rout: genExp.R
+# A general example of the generalized exponential
+genExp.flat.Rout: flat.R genExp.R
+	$(run-R)
 
 ######################################################################
 
