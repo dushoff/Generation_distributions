@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: EbolaCurve.flat.Rout
+target pngtarget pdftarget vtarget acrtarget: wallinga.Rout 
 
 ##################################################################
 
@@ -95,6 +95,14 @@ EbolaCurve.cex.Rout: lognormal.ga.Rout euler.Rout WHO.Rout cex.R EbolaCurve.R
 # Paper now uses this flatter version
 EbolaCurve.flat.Rout: lognormal.ga.Rout euler.Rout WHO.Rout flat.R EbolaCurve.R
 	$(run-R)
+
+## Normal curve added to Ebola
+wallingaNormal.Rout: wallingaNormal.R
+
+## A bunch of curves in the Ebola example (baseplot, discrete WL calculation, seminr, seir, single-gamma. seminr is the best and works fine with integers or not (but we will say that people shouldn't bother with integers)
+## Also, a new example (flu from WL). We use the second histogram
+## Curves show (in order): sir, seir, se2ir, single-gamma
+wallinga.Rout: wallinga.R
 
 ## Plain version uses mean and range from Ebola, but not approximations. Seems kind of hasty.
 %.plain.Rout: %.curve.Rout par.R plain.R
