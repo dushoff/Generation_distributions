@@ -9,10 +9,10 @@ lines(rho, (1 + rho*dtime/gbar)*(1 + rho*itime/gbar), col = "red")
 
 ##SEmInR model (assume gamma distributed latent and infectious period)
 dbar <- mean(lat)
-dshape <- round(dbar^2/var(lat))
+dshape <- (dbar^2/var(lat))
 
 ibar <- mean(ii)
-ishape <- round(ibar^2/var(ii))
+ishape <- (ibar^2/var(ii))
 
 SeminrR <- function(C){
     r <- 1/C
