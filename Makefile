@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: wallinga.Rout 
+target pngtarget pdftarget vtarget acrtarget: means.filtered.Rout 
 
 ##################################################################
 
@@ -60,9 +60,9 @@ exponential.Rout: lognormal.Rout
 	$(run-R)
 
 lognormal.filtered.Rout: filtered.R
-paper.filtered.Rout: lognormal.Rout funhist.Rout paper.R
+means.filtered.Rout: lognormal.Rout funhist.Rout means.R
 	$(run-R)
-paper.filtered.wide.pdf:
+means.filtered.wide.pdf:
 
 # Exponential version used in talk; not so clear if it's pedagogic
 exponential.filtered.Rout: exponential.R
