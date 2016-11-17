@@ -1,6 +1,3 @@
-## not sure how to work with makefile
-## I think I can figure out but I didn't want to break anything
-## Here's a fake makefile that sources all the files...
 
 par(mfrow = c(1, 3))
 
