@@ -1,8 +1,8 @@
 set.seed(628)
 
 nq <- 10000
-dtime <- 11.5
-itime <- 4.2
+dtime <- 11.4
+itime <- 5
 dshape <- 0.65
 ishape <- 0.8
 
