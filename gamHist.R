@@ -17,7 +17,7 @@ for(s in 1:length(shapes)){
 	print(hist(gen
 		, 	probability=TRUE
 		, main=dname
-		, xlab="Generation interval"
+		, xlab="Generation interval (days)"
 		, xlim=c(0, 50)
 		, breaks=seq(0, 150, by=5)
 	))

@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: example.Rout 
+target pngtarget pdftarget vtarget acrtarget: lognormal.ga.hist.Rout 
 
 ##################################################################
 
