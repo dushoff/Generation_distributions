@@ -1,8 +1,8 @@
 # Generation_distributions
-### Hooks for the editor to set the default target
+
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: means.filtered.Rout 
+target pngtarget pdftarget vtarget acrtarget: example.Rout 
 
 ##################################################################
 
@@ -111,6 +111,9 @@ wallinga.Rout: wallinga.R
 # A general example of the generalized exponential
 genExp.flat.Rout: flat.R genExp.R
 	$(run-R)
+
+# DSW's examples (in DSW's style)
+example.Rout: example.R
 
 ######################################################################
 

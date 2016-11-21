@@ -4,7 +4,7 @@ baseplot <- function(){
 	plot(rho, EulerCurve(gbar/rho, gen)
 		, type="l"
 		, ylim=c(1, 5)
-		, xlab = "Exponential growth rate (per month)" ## you scale and have per month. should be per days!
+		, xlab = "Rescaled exponential growth rate" ## you scale and have per month. should be per days!
 		, ylab = "R"
 	)
 }

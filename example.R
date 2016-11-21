@@ -1,5 +1,5 @@
 
-par(mfrow = c(1, 3))
+# par(mfrow = c(1, 3))
 
 source("lognormal.R")
 source("gamma.R")
