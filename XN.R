@@ -9,3 +9,7 @@ genN <- Vectorize(function(rho, kappa=NULL){
 	if (rho==0) return(1)
 	return(rho/(1-1/genX(rho, kappa)))
 })
+
+genG <- Vectorize(function(rho, kappa=NULL){
+	return(genX(rho=rho*(1+kappa)/2, kappa=(5*kappa+1)/(3*kappa+3)))
+})

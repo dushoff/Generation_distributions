@@ -26,6 +26,8 @@ framePlot <- function(m){
 
 gx <- outer(rho, kappa, function(x, y){return(genX(x, kappa=y))})
 gn <- outer(rho, kappa, function(x, y){return(genN(x, kappa=y))})
+gg <- outer(rho, kappa, function(x, y){return(genG(x, kappa=y))})
 
 framePlot(gx)
 framePlot(gn)
+framePlot(gg)
