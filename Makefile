@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: lognormal.ga.hist.Rout 
+target pngtarget pdftarget vtarget acrtarget: gx.Rout 
 
 ##################################################################
 
@@ -112,8 +112,16 @@ wallinga.Rout: wallinga.R
 genExp.flat.Rout: flat.R genExp.R
 	$(run-R)
 
+genExp.Rout: genExp.R
+	$(run-R)
+
 # DSW's examples (in DSW's style)
 example.Rout: example.R
+
+# Functions for generalized exponential and that other thing
+XN.Rout: XN.R
+
+gx.Rout: XN.Rout gx.R
 
 ######################################################################
 
