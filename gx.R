@@ -4,7 +4,6 @@ library(tidyr)
 rho <- seq(0, 3, length.out=101)
 kappa <- c(0, 1/4, 1/2, 1)
 
-
 framePlot <- function(m){
 	f <- (data.frame(rho, m=m)
 		%>% gather(kappa, R, m.1:m.4)
