@@ -11,5 +11,5 @@ genN <- Vectorize(function(rho, kappa=NULL){
 })
 
 genG <- Vectorize(function(rho, kappa=NULL){
-	return(genX(rho=2*rho/(1+kappa), kappa=(5*kappa+1)/(3*kappa+3)))
+	return(genX(rho=(1+kappa)*rho/2, kappa=(5*kappa+1)/(3*kappa+3)))
 })
