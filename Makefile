@@ -2,13 +2,13 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: gx.Rout 
+target pngtarget pdftarget vtarget acrtarget: gx.flat.Rout 
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
+Sources = Makefile .gitignore README.md stuff.mk LICENSE.md notes.txt
 include stuff.mk
 # include $(ms)/perl.def
 
@@ -127,8 +127,10 @@ XN.Rout: XN.R
 
 # Function responses and simple pictures.
 gx.Rout: XN.Rout gx.R
+# Flatter version
+gx.flat.Rout: XN.Rout flat.R gx.R
+	$(run-R)
 
-kw.Rout: gx.Rout kw.R
 
 ######################################################################
 
