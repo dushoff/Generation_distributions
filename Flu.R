@@ -15,4 +15,4 @@ dgen <- gen
 
 ## Flu reproduction number
 Reff <- 1.73
-rho_eff <- 0.2
+rho_eff <- 2.85 * 0.2

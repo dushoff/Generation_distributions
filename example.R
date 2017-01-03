@@ -11,12 +11,21 @@ title(main = "Ebola")
 
 source("SARS.R")
 source("gamma.R")
-source("SARSCurve.R")
+source("EbolaCurve.R")
 
 title(main = "SARS")
 
 source("Flu.R")
 source("gamma.R")
-source("SARSCurve.R")
+source("EbolaCurve.R")
 
 title(main = "Flu")
+
+source("Rabies.R")
+source("gamma.R")
+source("SARSCurve.R")
+title(main = "Rabies")
+
+rho_eff <- gbar * 0.0041
+source("EbolaCurve.R")
+title(main = "Rabies")

@@ -13,4 +13,4 @@ dgen <- gen
 
 ## SARS reproduction number
 Reff <- 3.2
-rho_eff <- 0.134
+rho_eff <- 9 * 0.134
