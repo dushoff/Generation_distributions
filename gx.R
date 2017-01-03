@@ -1,17 +1,11 @@
 library(ggplot2); theme_set(theme_bw())
 library(tidyr)
 
-rho <- seq(0, 3, length.out=101)
-kappa <- c(0, 1/4, 1/2, 1)
+rmax <- 3
+rho <- seq(0, rmax, length.out=101)
+kappa <- rev(c(0, 1/4, 1/2, 1))
 
-
-framePlot <- function(m){
-	f <- (data.frame(rho, m=m)
-		%>% gather(kappa, R, m.1:m.4)
-	)
-	knames <- unique(f$kappa)
-	print(f)
-
+framePlot <- function(f){
 	print(
 		ggplot(f, aes(x=rho, y=R, linetype=kappa))
 		+ geom_line()
@@ -19,15 +13,30 @@ framePlot <- function(m){
 		+ ylab("Effect")
 		+ ylim(c(1, 10))
 		+ scale_linetype_discrete(
-			breaks=knames, labels=as.numeric(kappa)
+			labels=as.numeric(kappa)
 		)
 	)
 }
 
-gx <- outer(rho, kappa, function(x, y){return(genX(x, kappa=y))})
-gn <- outer(rho, kappa, function(x, y){return(genN(x, kappa=y))})
-gg <- outer(rho, kappa, function(x, y){return(genG(x, kappa=y))})
+gx <- funFrame(rho, kappa, genX)
+gn <- funFrame(rho, kappa, genN)
+gg <- funFrame(rho, kappa, genG)
 
-framePlot(gx)
-framePlot(gg)
-framePlot(gn)
+gx$type <- "E"
+gn$type <- "I"
+gxn <- rbind(gx, gn)
+print(
+	ggplot(gxn, aes(x=rho, y=R, linetype=kappa, color=type))
+	+ geom_line()
+	+ xlab(expression(rho))
+	+ ylab("Effect")
+	+ ylim(c(1, 8))
+	+ scale_linetype_discrete(
+		labels=as.numeric(kappa)
+	)
+	+ geom_segment(aes(x = 0, xend=rmax, y = 1, yend = rmax+1) , color="black")
+)
+
+# framePlot(gx)
+# framePlot(gn)
+# framePlot(gg)

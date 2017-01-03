@@ -2,13 +2,13 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: gx.Rout 
+target pngtarget pdftarget vtarget acrtarget: gx.flat.Rout 
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
+Sources = Makefile .gitignore README.md stuff.mk LICENSE.md notes.txt
 include stuff.mk
 # include $(ms)/perl.def
 
@@ -118,10 +118,19 @@ genExp.Rout: genExp.R
 # DSW's examples (in DSW's style)
 example.Rout: example.R
 
-# Functions for generalized exponential and that other thing
+######################################################################
+
+# JD's approach to KW
+
+# Response functions and functions for making frames
 XN.Rout: XN.R
 
+# Function responses and simple pictures.
 gx.Rout: XN.Rout gx.R
+# Flatter version
+gx.flat.Rout: XN.Rout flat.R gx.R
+	$(run-R)
+
 
 ######################################################################
 
