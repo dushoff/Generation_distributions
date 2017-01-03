@@ -4,29 +4,39 @@ library(tidyr)
 rho <- seq(0, 3, length.out=101)
 kappa <- c(0, 1/4, 1/2, 1)
 
-framePlot <- function(m){
-	f <- (data.frame(rho, m=m)
-		%>% gather(kappa, R, m.1:m.4)
-	)
-	knames <- unique(f$kappa)
-	print(f)
-
+framePlot <- function(f){
 	print(
-		ggplot(f, aes(x=rho, y=R, linetype=kappa))
+		ggplot(f, aes(x=rho, y=R, linetype=rev(kappa)))
 		+ geom_line()
 		+ xlab("Interval")
 		+ ylab("Effect")
 		+ ylim(c(1, 10))
 		+ scale_linetype_discrete(
-			breaks=knames, labels=as.numeric(kappa)
+			breaks=unique(kappa)
+			, labels=as.numeric(rev(kappa))
 		)
 	)
 }
 
-gx <- outer(rho, kappa, function(x, y){return(genX(x, kappa=y))})
-gn <- outer(rho, kappa, function(x, y){return(genN(x, kappa=y))})
-gg <- outer(rho, kappa, function(x, y){return(genG(x, kappa=y))})
+gx <- funFrame(rho, kappa, genX)
+gn <- funFrame(rho, kappa, genN)
+gg <- funFrame(rho, kappa, genG)
+
+gx$type <- "E"
+gn$type <- "I"
+gxn <- rbind(gx, gn)
+print(
+	ggplot(gxn, aes(x=rho, y=R, linetype=rev(kappa), color=type))
+	+ geom_line()
+	+ xlab(expression(rho))
+	+ ylab("Effect")
+	+ ylim(c(1, 10))
+	+ scale_linetype_discrete(
+		breaks=unique(kappa)
+		, labels=as.numeric(rev(kappa))
+	)
+)
 
 framePlot(gx)
-framePlot(gn)
-framePlot(gg)
+# framePlot(gn)
+# framePlot(gg)

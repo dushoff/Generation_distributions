@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: example.Rout 
+target pngtarget pdftarget vtarget acrtarget: gx.Rout 
 
 ##################################################################
 
@@ -118,10 +118,17 @@ genExp.Rout: genExp.R
 # DSW's examples (in DSW's style)
 example.Rout: example.R
 
-# Functions for generalized exponential and that other thing
+######################################################################
+
+# JD's approach to KW
+
+# Response functions and functions for making frames
 XN.Rout: XN.R
 
+# Function responses and simple pictures.
 gx.Rout: XN.Rout gx.R
+
+kw.Rout: gx.Rout kw.R
 
 ######################################################################
 
