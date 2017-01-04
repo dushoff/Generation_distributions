@@ -1,4 +1,4 @@
-rho <- seq(0.01, 1.5 * rho_eff, by=0.01)
+rho <- seq(0.001, 1.5 * rho_eff, by=0.001)
 
 baseplot <- function(){
     plot(rho, EulerCurve(1/rho, gen)
