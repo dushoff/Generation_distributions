@@ -1,6 +1,7 @@
 set.seed(103)
 
 nq <- 10000
+q <- (2*(1:nq)-1)/(2*nq)
 
 inc <- read.csv("inc.csv")
 inc <- inc[!is.na(inc),]
