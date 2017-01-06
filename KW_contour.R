@@ -4,18 +4,22 @@ library(dplyr)
 library(emdbook)
 source("XN.R")
 
+ran = c(0.25, 2)
+
 KW_R0 <- function(C, lkappa, ikappa, lbar = 2, ibar = 1){
     r <- 1/C
-    genX(lbar * r, lkappa) * genN(ibar * r, ikappa)
+    return(genX(lbar * r, lkappa) * genN(ibar * r, ikappa))
 }
 
 cc <- curve3d(KW_R0(2, x, y),
-              xlim = c(0.1, 10),
-              ylim = c(0.1, 10),
-              n = 51,
-              sys3d = "contour",
-              xlab = expression(kappa[E]),
-              ylab = expression(kappa[I]))
+	xlim = ran,
+	ylim = ran,
+	n = 51,
+	sys3d = "contour",
+	log = "xy",
+	xlab = expression(kappa[E]),
+	ylab = expression(kappa[I])
+)
 
 if(FALSE){
     cc_list <- lapply(c(1, 2, 3), function(C){

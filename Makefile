@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: gx.flat.Rout 
+target pngtarget pdftarget vtarget acrtarget: emd_log.Rout 
 
 ##################################################################
 
@@ -115,8 +115,30 @@ genExp.flat.Rout: flat.R genExp.R
 genExp.Rout: genExp.R
 	$(run-R)
 
+######################################################################
+
 # DSW's examples (in DSW's style)
-example.Rout: example.R
+
+example.Rout: Flu.Rout example.R
+
+KW_comparison.Rout: euler.Rout KW_comparison.R
+
+KW_contour.Rout: XN.Rout KW_contour.R
+
+emd_log.Rout: emd_log.R
+
+KW_rabies.Rout: KW_rabies.R
+
+# Scripts don't run, or something
+# KW_rabies.Rout: Rabies.Rout gamma.Rout euler.Rout XN.Rout SARSCurve.Rout EbolaCurve.Rout KW_rabies.R
+
+######################################################################
+
+## Rabies pipeline
+
+## Data from Hampson (removed C-M, don't change after this).
+Sources += $(wildcard *.csv)
+Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
 ######################################################################
 
