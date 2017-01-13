@@ -1,1 +1,3 @@
-gg Color palettes. Why so hard?
+* Examine Daniel's code and compare results.
+
+* Bump Katie?
