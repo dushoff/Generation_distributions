@@ -20,11 +20,14 @@ inf <- with(rdata, {data.frame(
 	, units = Infectious.period.units
 )})
 
+inf <- ufun(inf)
+inf <- ufun(inf)
+inf$val <- inf$num*inf$uval
+mean(inf$val)
+sd(inf$val)
+
 inc <- ufun(inc)
 inf <- ufun(inf)
-
 inc$val <- inc$num*inc$uval
-
-
 mean(inc$val)
 sd(inc$val)

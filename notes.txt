@@ -1,3 +1,7 @@
-* Examine Daniel's code and compare results.
 
-* Bump Katie?
+For Daniel:
+
+* Make the merge keep the NAs somehow (so we can look for correlations between inf and inc)
+
+* Explore gamma fitting with likelihood vs. naïve (CV-based)
+
