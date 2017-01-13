@@ -1,3 +1,4 @@
+library(gsubfn)
 set.seed(103)
 
 nq <- 10000

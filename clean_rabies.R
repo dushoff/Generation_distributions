@@ -1,4 +1,3 @@
-library(gsubfn)
 
 clean_rabies <- function(df){
     df2 <- as.character(unlist(df))

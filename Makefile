@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: emd_log.Rout 
+target pngtarget pdftarget vtarget acrtarget: rabies_periods.Rout 
 
 ##################################################################
 
@@ -140,6 +140,15 @@ KW_rabies.Rout: KW_rabies.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
+## SWP's analysis of the old one-column csv's. Probably similar to KH's analysis, and can be compared with the new spreadsheet
+Rabies.Rout: clean_rabies.Rout RabiesIncubation.csv Rabies.R
+	$(run-R)
+
+rabies_drop/%: rabies_drop
+
+rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
+
+
 ######################################################################
 
 # JD's approach to KW
@@ -163,6 +172,7 @@ gx.flat.Rout: XN.Rout flat.R gx.R
 
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
+-include $(ms)/linkdirs.mk
 
 -include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
