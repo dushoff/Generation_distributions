@@ -1,3 +1,4 @@
+source("clean_rabies.R")
 source("Rabies.R")
 source("gamma.R")
 source("euler.R")

@@ -21,6 +21,7 @@ source("EbolaCurve.R")
 
 title(main = "Flu")
 
+source("clean_rabies.R")
 source("Rabies.R")
 source("gamma.R")
 source("SARSCurve.R")
