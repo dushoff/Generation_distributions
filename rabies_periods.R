@@ -6,8 +6,10 @@ ufun <- function(df){
 		units = c("Day", "Week", "Month")
 		, uval = c(1, 7, mon)
 	)
-	vf <- merge(df, utab)
-	return (vf)
+	df$id <- 1:nrow(df)
+	vf <- merge(df, utab, all = TRUE)
+	vg <- vf[order(vf$id),]
+	return (vg[1:nrow(df),])
 }
 
 rdata <- read.csv(input_files[[1]])
@@ -21,13 +23,11 @@ inf <- with(rdata, {data.frame(
 )})
 
 inf <- ufun(inf)
-inf <- ufun(inf)
 inf$val <- inf$num*inf$uval
-mean(inf$val)
-sd(inf$val)
+mean(inf$val, na.rm = TRUE)
+sd(inf$val, na.rm = TRUE)
 
 inc <- ufun(inc)
-inf <- ufun(inf)
 inc$val <- inc$num*inc$uval
-mean(inc$val)
-sd(inc$val)
+mean(inc$val, na.rm = TRUE)
+sd(inc$val, na.rm = TRUE)
