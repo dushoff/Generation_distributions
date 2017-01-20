@@ -1,14 +1,13 @@
-library(gsubfn)
 set.seed(103)
 
 nq <- 10000
 q <- (2*(1:nq)-1)/(2*nq)
 
-inc <- read.csv("RabiesIncubation.csv")
-inc <- clean_rabies(inc)
+inc <- inc$val
+inc <- inc[!is.na(inc)]
 
-ii <- read.csv("RabiesInfection.csv")
-ii <- clean_rabies(ii)
+ii <- inf$val
+ii <- ii[!is.na(ii)]
 
 lat <- sample(inc, nq, replace = TRUE)
 inf <- sample(ii, nq, replace = TRUE, prob = ii/sum(ii))
