@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ebola_mle.Rout 
+target pngtarget pdftarget vtarget acrtarget: rabies_mle.Rout 
 
 ##################################################################
 
