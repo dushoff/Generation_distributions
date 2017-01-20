@@ -1,7 +1,19 @@
+Daniel:
+=======
 
-For Daniel:
+* Keep working on Katie and rho_eff so we can tell a clean story
 
-* Make the merge keep the NAs somehow (so we can look for correlations between inf and inc)
 
-* Explore gamma fitting with likelihood vs. naïve (CV-based)
+Extra
+-----
 
+* Sampling from a bivariate gamma
+
+Jonathan
+========
+
+Break into two papers; make a really theoretical filtered-mean one.
+
+Maybe: add some realistic sampling stuff (or break into three papers)
+
+* What about MLE fitting vs. moment matching?

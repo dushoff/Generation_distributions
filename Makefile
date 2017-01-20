@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_periods.Rout 
+target pngtarget pdftarget vtarget acrtarget: ebola_mle.Rout 
 
 ##################################################################
 
@@ -149,11 +149,15 @@ rabies_drop/%: rabies_drop
 rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
 
 ## SWP exploring makefile and mle method
-rabies_mle.Rout: rabies_periods.Rout euler.Rout mle.R rabies.R rabies_mle.R
+rabies_mle.Rout: rabies_periods.Rout euler.Rout mle.R Rabies.R gen_mle.R
+	$(run-R)
+
+rabies_corr.Rout: rabies_periods.Rout corr.R
 	$(run-R)
 
 ## General workflow:
-## lognormal.ga.Rout euler.Rout WHO.Rout mle.R rabies_mle.R
+ebola_mle.Rout: lognormal.ga.Rout euler.Rout WHO.Rout mle.R gen_mle.R
+	$(run-R)
 
 ######################################################################
 

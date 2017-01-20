@@ -1,4 +1,6 @@
 set.seed(628)
+xmax <- 2
+ymax <- 5
 
 nq <- 10000
 dtime <- 11.4
