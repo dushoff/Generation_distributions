@@ -25,4 +25,3 @@ print(sd(gen))
 
 dname <- "Lognormal SEIR"
 dgen <- gen
-

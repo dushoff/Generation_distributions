@@ -159,6 +159,13 @@ rabies_corr.Rout: rabies_periods.Rout corr.R
 ebola_mle.Rout: lognormal.ga.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 	$(run-R)
 
+## SWP exploring sampling
+
+gamma_sample.Rout: gamma_sample.R
+
+ebola_sample.Rout: lognormal.ga.Rout euler.Rout WHO.Rout gamma_sample.Rout sample_graph.R
+	$(run-R)
+
 ######################################################################
 
 # JD's approach to KW
