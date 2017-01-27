@@ -6,7 +6,7 @@ gbar <- mean(gen)
 gam_param <- compare_gamma(gen, main = NULL, xlab = "Generation interval", breaks = 51)
 
 gamgen_list <- (gam_param
-	%>% lapply(. %>% append(., list(p = q)))
+	%>% lapply(function(x) append(x, list(p = q)))
 	%>% lapply(function(x) list(gamgen = do.call(qgamma, x)))
 )
 

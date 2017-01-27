@@ -7,12 +7,18 @@ approx_gamma <- function(x, nq = 10000){
     return(gamgen)
 }
 
-sample_generation <- function(gen, n = 100, trial = 100){
+sample_generation <- function(gen, n = 100, trial = 100, MLE = FALSE, seed = NULL){
     rho <- seq(0.1, 2.0, by=0.1)
     
+    if(!is.null(seed)){
+        set.seed(seed = seed)
+    }
     gam_list <- (1:trial
-        %>% lapply(function(x) sample(gen, n, replace = TRUE))
-        %>% lapply(approx_gamma)
+        %>% lapply(function(x) sample(gen, n))
+        %>% lapply(function(x) compare_gamma(x, plot = FALSE, MLE = MLE))
+        %>% lapply(function(x) {if(MLE) {x$mle} else {x$moment}})
+        %>% lapply(function(x) append(x, list(p = q)))
+        %>% lapply(function(x) do.call(qgamma, x))
         %>% lapply(function(x) EulerCurve(mean(x)/rho, x))
     )
     gam_mat <- do.call(cbind, gam_list)
