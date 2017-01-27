@@ -33,8 +33,10 @@ point_df <- data.frame(
 )
 
 gbar <- mean(gen)
+rho <- seq(0.1, 2.0, by=0.1)
+
 true_df <- data.frame(
-    rho = seq(0.1, 2.0, by=0.1)
+    rho = rho
     , mean = EulerCurve(gbar/rho, gen)
 )
 
