@@ -10,7 +10,7 @@ gammaMLE <- function(data, start, ...){
 	 return(fit)
 }
 
-compare_gamma <- function(data, ...){
+compare_gamma <- function(data, plot = TRUE, MLE = TRUE, ...){
     x <- data
     
     q <- seq(0.1, max(x), by = 0.1)
@@ -21,17 +21,22 @@ compare_gamma <- function(data, ...){
     dgam_approx <- dgamma(q, scale=gamscale, shape=gamshape)
     coef_list_approx <- list(shape = gamshape, scale = gamscale)
     
-    m0 <- gammaMLE(x, start = coef_list_approx)
-    coef_list_mle <- arg_list <- as.list(coef(m0))
-    arg_list$x <- q
-    dgam_mle <- do.call(dgamma, arg_list)
+    res <- list(moment = coef_list_approx)
     
-    hist(x, freq = FALSE, ...)
-    lines(q, dgam_approx, col = "red")
-    lines(q, dgam_mle, col = "blue", lty = 2)
+    if(MLE){
+        m0 <- gammaMLE(x, start = coef_list_approx)
+        coef_list_mle <- arg_list <- as.list(coef(m0))
+        arg_list$x <- q
+        dgam_mle <- do.call(dgamma, arg_list)
+        res$mle <- coef_list_mle
+    }
     
-    invisible(list(
-        moment = coef_list_approx
-        , mle = coef_list_mle
-    ))
+    if(plot){
+        hist(x, freq = FALSE, ...)
+        lines(q, dgam_approx, col = "red")
+        if(MLE)
+            lines(q, dgam_mle, col = "blue", lty = 2)
+    }
+    
+    invisible(res)
 }

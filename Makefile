@@ -163,7 +163,7 @@ ebola_mle.Rout: lognormal.ga.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 
 gamma_sample.Rout: gamma_sample.R
 
-ebola_sample.Rout: lognormal.ga.Rout euler.Rout WHO.Rout gamma_sample.Rout sample_graph.R
+ebola_sample.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
 
 ######################################################################
