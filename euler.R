@@ -9,4 +9,3 @@ EulerCurve <- function(CC, tau){
 		return(EulerR(tau, C=cc))
 	})
 }
-

@@ -13,7 +13,7 @@ gammaMLE <- function(data, start, ...){
 compare_gamma <- function(data, plot = TRUE, MLE = TRUE, ...){
     x <- data
     
-    q <- seq(0.1, max(x), by = 0.1)
+    q <- seq(0.01, max(x), by = 0.01)
     
     xbar <- mean(x)
     gamshape <- xbar^2/var(x)
@@ -33,9 +33,9 @@ compare_gamma <- function(data, plot = TRUE, MLE = TRUE, ...){
     
     if(plot){
         hist(x, freq = FALSE, ...)
-        lines(q, dgam_approx, col = "red")
+        lines(q, dgam_approx, lty = 2)
         if(MLE)
-            lines(q, dgam_mle, col = "blue", lty = 2)
+            lines(q, dgam_mle, lty = 3)
     }
     
     invisible(res)

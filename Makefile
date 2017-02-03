@@ -156,14 +156,25 @@ rabies_corr.Rout: rabies_periods.Rout corr.R
 	$(run-R)
 
 ## General workflow:
-ebola_mle.Rout: lognormal.ga.Rout euler.Rout WHO.Rout mle.R gen_mle.R
+ebola_mle.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 	$(run-R)
 
-## SWP exploring sampling
+##############################
 
 gamma_sample.Rout: gamma_sample.R
 
-ebola_sample.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
+# some figures that can be used here and there
+
+rabies_mle_hist.Rout: rabies_periods.Rout Rabies.R mle.R gen_mle.R mle_hist_legend.R
+	$(run-R)
+
+rabies_mle_curve.Rout: rabies_periods.Rout Rabies.R mle.R suppress_hist.R gen_mle.R euler.R mle_curve.R mle_curve_legend.R
+	$(run-R)
+
+ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle_hist_legend.R
+	$(run-R)
+
+ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
 
 ######################################################################
