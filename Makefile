@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ebola_sample.Rout 
+target pngtarget pdftarget vtarget acrtarget: genExp.flat.Rout 
 
 ##################################################################
 
@@ -92,7 +92,7 @@ lognormal.curve.Rout: curve.R
 EbolaCurve.cex.Rout: lognormal.ga.Rout euler.Rout WHO.Rout cex.R EbolaCurve.R
 	$(run-R)
 
-# Paper now uses this flatter version
+# Paper now uses this flatter version of Ebola example
 EbolaCurve.flat.Rout: lognormal.ga.Rout euler.Rout WHO.Rout flat.R EbolaCurve.R
 	$(run-R)
 
@@ -164,16 +164,23 @@ ebola_mle.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 gamma_sample.Rout: gamma_sample.R
 
 # some figures that can be used here and there
+## see ~/git/generation_interval_moments/notes.md
 
+# Rabies MLE vs moment histogram (rabies_mle_hist.Rout) 
 rabies_mle_hist.Rout: rabies_periods.Rout Rabies.R mle.R gen_mle.R mle_hist_legend.R
 	$(run-R)
 
+# Rabies MLE vs moment curve (rabies_mle_curve.Rout)
 rabies_mle_curve.Rout: rabies_periods.Rout Rabies.R mle.R suppress_hist.R gen_mle.R euler.R mle_curve.R mle_curve_legend.R
 	$(run-R)
 
+# Sampling stuff with Ebola (ebola_sample.Rout)
+## Even when sample size is small, MLE is robust, moment matching not so much
+#### Example histogram
 ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle_hist_legend.R
 	$(run-R)
 
+#### Fancy shaded curves
 ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
 

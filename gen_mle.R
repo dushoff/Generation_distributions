@@ -20,6 +20,6 @@ if(exists("sgen")){
 gam_param <- compare_gamma(hgen
     , plot = plot_hist
     , main = NULL
-    , xlab = "Generation interval (years)"
+    , xlab = "Generation interval (days)"
     , breaks = breaks
 )
