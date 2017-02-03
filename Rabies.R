@@ -1,6 +1,6 @@
 set.seed(103)
-xmax <- 0.5
-ymax <- 2
+xmax <- 1.5
+ymax <- 5
 
 nq <- 10000
 q <- (2*(1:nq)-1)/(2*nq)
@@ -24,4 +24,4 @@ dgen <- gen
 
 ## rabies reproduction number?
 Reff <- 1.1
-rho_eff <- 0.0041*gbar
+rho_eff <- 0.0039*gbar
