@@ -166,6 +166,11 @@ gamma_sample.Rout: gamma_sample.R
 # some figures that can be used here and there
 ## see ~/git/generation_interval_moments/notes.md
 
+# Ebola curve (normal vs expected)
+
+ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R normalCurve.R normalHist.R
+	$(run-R)
+
 # Rabies MLE vs moment histogram (rabies_mle_hist.Rout) 
 rabies_mle_hist.Rout: rabies_periods.Rout Rabies.R mle.R gen_mle.R mle_hist_legend.R
 	$(run-R)
