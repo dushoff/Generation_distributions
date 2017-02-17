@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_hist.Rout 
+target pngtarget pdftarget vtarget acrtarget: ebola_sample_curve.Rout 
 
 ##################################################################
 
@@ -163,9 +163,6 @@ ebola_mle.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 
 gamma_sample.Rout: gamma_sample.R
 
-# some figures that can be used here and there
-## see ~/git/generation_interval_moments/notes.md
-
 # Ebola curve (normal vs expected)
 
 ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R normalCurve.R normalHist.R
@@ -188,6 +185,9 @@ ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle
 #### Fancy shaded curves
 ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
+
+ebola_sample_curve.pdf: ebola_sample_curve.Rout.pdf
+	$(LN)
 
 ######################################################################
 
