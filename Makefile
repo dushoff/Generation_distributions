@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ebola_sample_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: steps.wide.pdf 
 
 ##################################################################
 
@@ -185,6 +185,9 @@ ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle
 #### Fancy shaded curves
 ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
+
+%_Rout.pdf: %.Rout.pdf
+	$(link) 
 
 ebola_sample_curve.pdf: ebola_sample_curve.Rout.pdf
 	$(LN)
