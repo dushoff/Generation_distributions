@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: steps.wide.pdf 
+target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
 
 ##################################################################
 
@@ -140,18 +140,12 @@ KW_rabies.Rout: KW_rabies.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
-## SWP's analysis of the old one-column csv's. Probably similar to KH's analysis, and can be compared with the new spreadsheet
-Rabies.Rout: clean_rabies.Rout RabiesIncubation.csv Rabies.R
-	$(run-R)
-
 rabies_drop/%: rabies_drop
 
+## Read the new data
 rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
 
-## SWP exploring makefile and mle method
-rabies_mle.Rout: rabies_periods.Rout euler.Rout mle.R Rabies.R gen_mle.R
-	$(run-R)
-
+## Are infectious and incubation periods correlated: ρ-hat 0.28 (0.14, 0.41)
 rabies_corr.Rout: rabies_periods.Rout corr.R
 	$(run-R)
 
@@ -168,12 +162,14 @@ gamma_sample.Rout: gamma_sample.R
 ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R normalCurve.R normalHist.R
 	$(run-R)
 
+Rabies.Rout: rabies_periods.Rout Rabies.R
+
 # Rabies MLE vs moment histogram (rabies_mle_hist.Rout) 
-rabies_mle_hist.Rout: rabies_periods.Rout Rabies.R mle.R gen_mle.R mle_hist_legend.R
+rabies_mle_hist.Rout: Rabies.Rout mle.R gen_mle.R mle_hist_legend.R
 	$(run-R)
 
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
-rabies_mle_curve.Rout: rabies_periods.Rout Rabies.R mle.R suppress_hist.R gen_mle.R euler.R mle_curve.R mle_curve_legend.R
+rabies_mle_curve.Rout: Rabies.Rout mle.Rout gen_mle.R euler.R mle_curve.R mle_curve_legend.R
 	$(run-R)
 
 # Sampling stuff with Ebola (ebola_sample.Rout)

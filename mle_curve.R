@@ -1,6 +1,6 @@
 gamgen_list <- (gam_param
-    %>% lapply(function(x) append(x, list(p = q)))
-    %>% lapply(function(x) list(gamgen = do.call(qgamma, x)))
+    %>% lapply(function(x) return(append(x, list(p = q))))
+    %>% lapply(function(x) return(list(gamgen = do.call(qgamma, x))))
 )
 
 rho <- seq(0.0, xmax, length.out=101)
