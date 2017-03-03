@@ -35,7 +35,7 @@ compare_gamma <- function(data, plot = TRUE, MLE = TRUE, ...){
         hist(x, freq = FALSE, ...)
         lines(q, dgam_approx, lty = 2)
         if(MLE)
-            lines(q, dgam_mle, lty = 3)
+            lines(q, dgam_mle, lty = 4)
     }
     
     invisible(res)

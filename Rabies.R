@@ -1,6 +1,6 @@
 set.seed(103)
-xmax <- 0.1
-ymax <- exp(xmax)
+xmax <- 1.5
+ymax <- 5
 
 nq <- 10000
 q <- (2*(1:nq)-1)/(2*nq)
@@ -23,5 +23,4 @@ dname <- "Rabies"
 dgen <- gen
 
 ## rabies reproduction number?
-Reff <- 1.1
-rho_eff <- 0.0039*gbar
+Reff <- c(1.1, 1.3)

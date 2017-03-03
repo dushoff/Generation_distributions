@@ -165,11 +165,11 @@ ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R n
 Rabies.Rout: rabies_periods.Rout Rabies.R
 
 # Rabies MLE vs moment histogram (rabies_mle_hist.Rout) 
-rabies_mle_hist.Rout: Rabies.Rout mle.R gen_mle.R mle_hist_legend.R
+rabies_mle_hist.Rout: Rabies.Rout euler.Rout findrho.R mle.R gen_mle.R mle_hist_legend.R
 	$(run-R)
 
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
-rabies_mle_curve.Rout: Rabies.Rout mle.Rout gen_mle.R euler.R mle_curve.R mle_curve_legend.R
+rabies_mle_curve.Rout: Rabies.Rout euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
 	$(run-R)
 
 # Sampling stuff with Ebola (ebola_sample.Rout)

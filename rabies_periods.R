@@ -1,11 +1,11 @@
 
 ## Our four-year cycle has 1461 days and 48 months
-    ufun <- function(df){
-    	mon <- 487/16
-    	utab <- data.frame(
-    		units = c("Day", "Week", "Month")
-		, uval = c(1, 7, mon)
-	)
+ufun <- function(df){
+	mon <- 487/16
+	utab <- data.frame(
+		units = c("Day", "Week", "Month")
+	, uval = c(1, 7, mon)
+    )
 	df$id <- 1:nrow(df)
 	vf <- merge(df, utab, all = TRUE)
 	vg <- vf[order(vf$id),]
