@@ -1,6 +1,6 @@
 set.seed(103)
-xmax <- 1.5
-ymax <- 5
+xmax <- 0.5
+ymax <- exp(xmax)
 
 nq <- 10000
 q <- (2*(1:nq)-1)/(2*nq)
