@@ -1,3 +1,5 @@
+library(dplyr)
+
 gamgen_list <- (gam_param
     %>% lapply(function(x) return(append(x, list(p = q))))
     %>% lapply(function(x) return(list(gamgen = do.call(qgamma, x))))
