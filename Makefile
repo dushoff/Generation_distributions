@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: chinese.Rout 
 
 ##################################################################
 
@@ -183,6 +183,8 @@ rabies_mle_hist.Rout: rabies_mle.Rout
 # rabies_mle_curve.Rout: Rabies.Rout mle.Rout gen_mle.R euler.R mle_curve.R mle_curve_legend.R
 rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout findrho.R mle_curve.R mle_curve_legend.R
 	$(run-R)
+
+chinese.Rout: chinese.R
 
 #### Fancy shaded curves
 ebola_samples.Rout: lognormal.Rout euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
