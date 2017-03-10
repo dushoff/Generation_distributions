@@ -182,11 +182,19 @@ ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle
 ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
 	$(run-R)
 
+#### Measles curve with SEIR model. We get almost identical curves!
+measles_curve.Rout: measles.Rout euler.Rout findrho.R gamma.Rout EbolaCurve.R
+	$(run-R)
+
+measles_sample_curve.Rout: measles.Rout euler.Rout findrho.R mle.R gamma_sample.Rout sample_graph.R
+	$(run-R)
+
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
 
 ebola_sample_curve.pdf: ebola_sample_curve.Rout.pdf
 	$(LN)
+
 
 ######################################################################
 

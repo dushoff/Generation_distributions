@@ -8,7 +8,7 @@ approx_gamma <- function(x, nq = 10000){
 }
 
 sample_generation <- function(gen, n = 100, trial = 100, MLE = FALSE, seed = NULL){
-    rho <- seq(0.1, 2.0, by=0.1)
+    rho <- seq(0.1, xmax, by=0.1)
     
     if(!is.null(seed)){
         set.seed(seed = seed)

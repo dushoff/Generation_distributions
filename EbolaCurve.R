@@ -1,9 +1,9 @@
-rho <- seq(0.1, 2.0, by=0.1)
+rho <- seq(0.1, xmax, by=0.1)
 ## you are also scaling by mean generation time here
 baseplot <- function(){
 	plot(rho, EulerCurve(gbar/rho, gen)
 		, type="l"
-		, ylim=c(1, 5)
+		, ylim=c(1, ymax)
 		, xlab = "Rescaled exponential growth rate" ## you scale and have per month. should be per days!
 		, ylab = "R"
 	)
