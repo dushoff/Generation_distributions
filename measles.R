@@ -2,16 +2,17 @@ set.seed(628)
 xmax <- 3
 ymax <- exp(3)
 
+## Need to check how to interpret Cummings fit!
 nq <- 10000
 dtime <- 12.5 ## Cummings et al. 2009 from a systematic review
 dshape <- log(1.23) ## Cummings et al
-itime <- 3.65
-ishape <- itime^2*5
-
 ##disp: 1.23
 
-## Schenzle 1984 has generation time, infectious period, and latent period
-## but seems to assume exponential distribution... What do I do?
+## Using some dicey inferences from Alun Lloyd for infectious period
+itime <- 3.65
+ishape <- 5
+
+## Not using random stuff from Schenzle
 ## dtime <- 8
 ## itime <- 5
 
