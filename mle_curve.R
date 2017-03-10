@@ -15,13 +15,11 @@ plot(rho, EulerCurve(gbar/rho, gen)
      , bty = "l"
 )
 
-for(i in 1:2)
-    gamgen_list[[i]]$id <- i
+ltyv <- c(2, 4)
 
-print(
-    lapply(gamgen_list, function(x) with(x, lines(rho, EulerCurve(gbar/rho, gamgen), lty = id + 1)))
-)
+for(i in 1:2)
+    with(gamgen_list[[i]], lines(rho, EulerCurve(gbar/rho, gamgen), lty = ltyv[i]))
 
 points(rho_eff, Reff, pch=19)
-curve(1+x, add=TRUE, col="blue", lty=2)
-curve(exp(x), add=TRUE, col="blue", lty=2)
+curve(1+x, add=TRUE, col="blue", lty=3)
+curve(exp(x), add=TRUE, col="blue", lty=3)

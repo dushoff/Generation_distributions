@@ -1,20 +1,15 @@
 library(dplyr)
+library(bbmle)
 library(ggplot2); theme_set(theme_bw())
 cbPalette <- c("#0072B2", "#D55E00")
 
 n_vec <- c(50, 200, 500)
 
-fn <- "lognormal_sample.rda"
+arg_list <- list(moment = FALSE, MLE = TRUE)
+samp <- (arg_list 
+    %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 100, MLE = x, seed = 101)))
+)
 
-if(file.exists(fn)){
-    load(fn)
-}else{
-    arg_list <- list(moment = FALSE, MLE = TRUE)
-    samp <- (arg_list 
-        %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 100, MLE = x, seed = 101)))
-    )
-    save("samp", file = fn)
-}
 
 samp_df <- (lapply(samp, function(x){
     df <- do.call(rbind, x)
@@ -33,7 +28,7 @@ point_df <- data.frame(
 )
 
 gbar <- mean(gen)
-rho <- seq(0.1, 2.0, by=0.1)
+rho <- seq(0.1, xmax, by=0.1)
 
 true_df <- data.frame(
     rho = rho
@@ -47,12 +42,12 @@ print(ggplot(bind_df, aes(rho, mean))
     + geom_ribbon(aes(ymin = lwr, ymax = upr, fill = type), alpha = 0.15)
     + geom_point(data = point_df)
     + geom_line(data = true_df, lty = 1)
-    + stat_function(fun = function(x) x + 1, lty = 2)
-    + stat_function(fun = exp, lty = 2)
+    + stat_function(fun = function(x) x + 1, lty = 3)
+    + stat_function(fun = exp, lty = 3)
     + facet_wrap(~n, nrow = 1)
     + scale_x_continuous(expand = c(0, 0))
     + theme(panel.spacing.x = grid::unit(0, "lines"))
-    + scale_linetype_manual(values = c(3, 2))
+    + scale_linetype_manual(values = c(4, 2))
     + scale_color_manual(values=cbPalette)
     + scale_fill_manual(values=cbPalette)
 )
