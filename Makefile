@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: chinese.Rout 
 
 ##################################################################
 
@@ -184,6 +184,7 @@ rabies_mle_hist.Rout: rabies_mle.Rout
 rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout findrho.R mle_curve.R mle_curve_legend.R
 	$(run-R)
 
+## Test whether R can use a Chinese character as a variable name
 chinese.Rout: chinese.R
 
 #### Fancy shaded curves
