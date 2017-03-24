@@ -1,11 +1,11 @@
 library(dplyr)
 library(bbmle)
 
-n_vec <- c(50, 200, 500)
+n_vec <- c(50, 200)
 
 arg_list <- list(moment = FALSE, MLE = TRUE)
 samp <- (arg_list 
-    %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 100, MLE = x, seed = 101)))
+    %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 1000, MLE = x, seed = 101)))
 )
 
 
