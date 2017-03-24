@@ -170,6 +170,23 @@ rabies_mle_hist.Rout: Rabies.Rout euler.Rout findrho.R mle.R gen_mle.R mle_hist_
 
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
 rabies_mle_curve.Rout: Rabies.Rout euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
+# =======
+# Find rabies mle and make default histogram
+rabies_mle.Rout: Rabies.Rout mle.Rout gen_mle.R rabies_hist.R
+	$(run-R)
+
+# Rabies MLE vs moment histogram (nicer version) 
+# NOT WORKING
+# Daniel: it's usually better to fit and plot in separate scripts.
+# Would be nice to figure out how to take output from compare_gamma and make nicer pix
+rabies_mle_hist.Rout: rabies_mle.Rout
+	$(run-R)
+
+# Rabies MLE vs moment curve (rabies_mle_curve.Rout)
+# We don't need to redo all this; I changed your make rule.
+# rabies_mle_curve.Rout: Rabies.Rout mle.Rout gen_mle.R euler.R mle_curve.R mle_curve_legend.R
+rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout mle_curve.R mle_curve_legend.R
+# >>>>>>> master
 	$(run-R)
 
 # Sampling stuff with Ebola (ebola_sample.Rout)
