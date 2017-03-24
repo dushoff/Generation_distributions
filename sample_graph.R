@@ -3,13 +3,12 @@ library(bbmle)
 library(ggplot2); theme_set(theme_bw())
 cbPalette <- c("#0072B2", "#D55E00")
 
-n_vec <- c(50, 200, 500)
+n_vec <- c(50, 200)
 
 arg_list <- list(moment = FALSE, MLE = TRUE)
 samp <- (arg_list 
-    %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 100, MLE = x, seed = 101)))
+    %>% lapply(function(x) lapply(n_vec, function(i) sample_generation(gen, n = i, trial = 1000, MLE = x, seed = 101)))
 )
-
 
 samp_df <- (lapply(samp, function(x){
     df <- do.call(rbind, x)
@@ -24,7 +23,7 @@ bind_df <- (samp_df
 
 point_df <- data.frame(
     rho = rho_eff
-    , mean = Reff
+    , median = Reff
 )
 
 gbar <- mean(gen)
@@ -32,12 +31,12 @@ rho <- seq(0.1, xmax, by=0.1)
 
 true_df <- data.frame(
     rho = rho
-    , mean = EulerCurve(gbar/rho, gen)
+    , median = EulerCurve(gbar/rho, gen)
 )
 
 ## gamma approximation works well even with low number of samples (50)
 
-print(ggplot(bind_df, aes(rho, mean))
+print(ggplot(bind_df, aes(rho, median))
     + geom_line(aes(col = type, lty = type)) 
     + geom_ribbon(aes(ymin = lwr, ymax = upr, fill = type), alpha = 0.15)
     + geom_point(data = point_df)
