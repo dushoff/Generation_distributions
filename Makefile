@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: chinese.Rout 
 
 ##################################################################
 
@@ -164,13 +164,9 @@ ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R n
 
 Rabies.Rout: rabies_periods.Rout Rabies.R
 
-# Rabies MLE vs moment histogram (rabies_mle_hist.Rout) 
-rabies_mle_hist.Rout: Rabies.Rout euler.Rout findrho.R mle.R gen_mle.R mle_hist_legend.R
-	$(run-R)
-
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
 rabies_mle_curve.Rout: Rabies.Rout euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
-# =======
+
 # Find rabies mle and make default histogram
 rabies_mle.Rout: Rabies.Rout mle.Rout gen_mle.R rabies_hist.R
 	$(run-R)
@@ -185,32 +181,29 @@ rabies_mle_hist.Rout: rabies_mle.Rout
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
 # We don't need to redo all this; I changed your make rule.
 # rabies_mle_curve.Rout: Rabies.Rout mle.Rout gen_mle.R euler.R mle_curve.R mle_curve_legend.R
-rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout mle_curve.R mle_curve_legend.R
-# >>>>>>> master
+rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout findrho.R mle_curve.R mle_curve_legend.R
 	$(run-R)
 
-# Sampling stuff with Ebola (ebola_sample.Rout)
-## Even when sample size is small, MLE is robust, moment matching not so much
-#### Example histogram
-ebola_sample_ex.Rout: lognormal.Rout euler.Rout sample_gen.R mle.R gen_mle.R mle_hist_legend.R
-	$(run-R)
+chinese.Rout: chinese.R
 
 #### Fancy shaded curves
-ebola_sample_curve.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gamma_sample.Rout sample_graph.R
+ebola_samples.Rout: lognormal.Rout euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
 	$(run-R)
 
-#### Measles curve with SEIR model. We get almost identical curves!
-measles_curve.Rout: measles.Rout euler.Rout findrho.R gamma.Rout EbolaCurve.R
+ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
 	$(run-R)
 
-measles_sample_curve.Rout: measles.Rout euler.Rout findrho.R mle.R gamma_sample.Rout sample_graph.R
+measles_curve.Rout: measles.Rout euler.Rout findrho.R gamma.R EbolaCurve.R
+	$(run-R)
+
+measles_samples.Rout: measles.Rout euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
+	$(run-R)
+
+measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 	$(run-R)
 
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
-
-ebola_sample_curve.pdf: ebola_sample_curve.Rout.pdf
-	$(LN)
 
 
 ######################################################################
