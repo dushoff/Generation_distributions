@@ -22,7 +22,7 @@ bind_df <- (samp_df
 
 point_df <- data.frame(
     rho = rho_eff
-    , mean = Reff
+    , median = Reff
 )
 
 gbar <- mean(gen)
@@ -30,6 +30,6 @@ rho <- seq(0.1, xmax, by=0.1)
 
 true_df <- data.frame(
     rho = rho
-    , mean = EulerCurve(gbar/rho, gen)
+    , median = EulerCurve(gbar/rho, gen)
 )
 
