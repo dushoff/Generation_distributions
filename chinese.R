@@ -9,3 +9,8 @@ print(媽媽)
 
 爸6 <- 6
 print(爸6)
+
+print(爸*爸6)
+
+α <-3 
+print(α)
