@@ -3,7 +3,7 @@ cbPalette <- c("#0072B2", "#D55E00")
 
 ## gamma approximation works well even with low number of samples (50)
 
-print(ggplot(bind_df, aes(rho, mean))
+print(ggplot(bind_df, aes(rho, median))
     + geom_line(aes(col = type, lty = type)) 
     + geom_ribbon(aes(ymin = lwr, ymax = upr, fill = type), alpha = 0.15)
     + geom_point(data = point_df)

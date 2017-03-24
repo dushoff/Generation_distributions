@@ -25,7 +25,7 @@ sample_generation <- function(gen, n = 100, trial = 100, MLE = FALSE, seed = NUL
     
     return(data.frame(
         rho = rho
-        , mean = rowMeans(gam_mat)
+        , median = apply(gam_mat, 1, median)
         , lwr = apply(gam_mat, 1, quantile, 0.025)
         , upr = apply(gam_mat, 1, quantile, 0.975)
     ))
