@@ -1,5 +1,5 @@
 set.seed(103)
-xmax <- 0.5
+xmax <- 1.5
 ymax <- exp(xmax)
 
 nq <- 10000
