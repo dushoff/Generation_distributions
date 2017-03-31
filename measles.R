@@ -32,8 +32,14 @@ lat <- lat*dtime/mean(lat)
 
 gen <- runif(nq, min=lat, max=lat+infTime)
 
-print(mean(gen))
-print(sd(gen))
+cv <- function(v) sd(v)/mean(v)
+
+print (c( 
+	infPeriod = cv(infPeriod)
+	, infTime=cv(infTime)
+	, lat=cv(lat)
+	, gen=cv(gen)
+))
 
 dname <- "Exponential SEIR"
 dgen <- gen

@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: measles_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: measles.Rout 
 
 ##################################################################
 
