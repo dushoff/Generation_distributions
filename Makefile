@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: chinese.Rout 
+target pngtarget pdftarget vtarget acrtarget: measles_curve.Rout 
 
 ##################################################################
 
@@ -193,6 +193,8 @@ ebola_samples.Rout: lognormal.Rout euler.Rout WHO.Rout mle.Rout gamma_sample.Rou
 
 ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
 	$(run-R)
+
+measles.Rout: measles.R
 
 measles_curve.Rout: measles.Rout euler.Rout findrho.R gamma.R EbolaCurve.R
 	$(run-R)
