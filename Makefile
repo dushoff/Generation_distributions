@@ -56,11 +56,11 @@ exponential.Rout: lognormal.Rout
 # funhist has histogram functions
 # filtered.R is expecting calculated objects (Simulations, above)
 
-%.filtered.Rout: %.Rout funhist.Rout filtered.R
+%.filtered.Rout: %.Rout calculate.R funhist.Rout filtered.R
 	$(run-R)
 
 lognormal.filtered.Rout: filtered.R
-means.filtered.Rout: lognormal.Rout funhist.Rout means.R
+means.filtered.Rout: lognormal.Rout calculate.R funhist.Rout means.R
 	$(run-R)
 means.filtered.wide.pdf:
 
@@ -70,7 +70,7 @@ exponential.filtered.Rout: exponential.R
 # Plain histograms (compare sim and its single-gamma approximation)
 lognormal.hist.Rout:
 lognormal.ga.hist.Rout:
-%.hist.Rout: %.Rout hist.R
+%.hist.Rout: %.Rout calculate.R hist.R
 	$(run-R)
 
 ######################################################################
@@ -150,7 +150,7 @@ rabies_corr.Rout: rabies_periods.Rout corr.R
 	$(run-R)
 
 ## General workflow:
-ebola_mle.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gen_mle.R
+ebola_mle.Rout: lognormal.Rout calculate.R euler.Rout WHO.Rout mle.R gen_mle.R
 	$(run-R)
 
 ##############################
@@ -165,10 +165,10 @@ ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R n
 Rabies.Rout: rabies_periods.Rout Rabies.R
 
 # Rabies MLE vs moment curve (rabies_mle_curve.Rout)
-rabies_mle_curve.Rout: Rabies.Rout euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
+rabies_mle_curve.Rout: Rabies.Rout calculate.R euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
 
 # Find rabies mle and make default histogram
-rabies_mle.Rout: Rabies.Rout mle.Rout gen_mle.R rabies_hist.R
+rabies_mle.Rout: Rabies.Rout calculate.R mle.Rout gen_mle.R rabies_hist.R
 	$(run-R)
 
 # Rabies MLE vs moment histogram (nicer version) 
@@ -188,7 +188,7 @@ rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout findrho.R mle_curve.R mle_curv
 chinese.Rout: chinese.R
 
 #### Fancy shaded curves
-ebola_samples.Rout: lognormal.Rout euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
+ebola_samples.Rout: lognormal.Rout calculate.R euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
 	$(run-R)
 
 ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
@@ -196,10 +196,10 @@ ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
 
 measles.Rout: measles.R
 
-measles_curve.Rout: measles.Rout euler.Rout findrho.R gamma.R EbolaCurve.R
+measles_curve.Rout: measles.Rout calculate.R euler.Rout findrho.R gamma.R EbolaCurve.R
 	$(run-R)
 
-measles_samples.Rout: measles.Rout euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
+measles_samples.Rout: measles.Rout calculate.R euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
 	$(run-R)
 
 measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
