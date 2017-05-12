@@ -2,7 +2,7 @@
 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
+target pngtarget pdftarget vtarget acrtarget: measles_sample_curve.Rout 
 
 ##################################################################
 
@@ -196,7 +196,7 @@ ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
 
 measles.Rout: measles.R
 
-measles_curve.Rout: measles.Rout calculate.R euler.Rout findrho.R gamma.R EbolaCurve.R
+measles_curve.Rout: measles.Rout calculate.R euler.Rout flat.R findrho.R gamma.R EbolaCurve.R
 	$(run-R)
 
 measles_samples.Rout: measles.Rout calculate.R euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
