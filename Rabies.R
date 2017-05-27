@@ -15,4 +15,4 @@ ii <- inf$val
 ii <- ii[!is.na(ii)]
 
 ## rabies reproduction number?
-Reff <- c(1.1, 1.3)
+Reff <- c(1.06, 1.32)

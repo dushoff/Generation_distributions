@@ -7,7 +7,7 @@ dname <- "Lognormal SEIR"
 pars <- list(
     dtime = 11.4,
     itime = 5,
-    dshape = 0.65,
+    dshape = 0.6,
     ishape = 0.8
 )
 
