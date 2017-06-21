@@ -3,8 +3,6 @@
 current: target
 -include target.mk
 
-target pngtarget pdftarget vtarget acrtarget: measles_sample_curve.Rout 
-
 ##################################################################
 
 # make files
