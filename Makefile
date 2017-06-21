@@ -39,7 +39,7 @@ condition.Rout: condition.R
 simple.Rout: simple.R
 
 ## And now based on lognormal stuff
-lognormal.Rout: lognormal.R
+lognormal.Rout: lognormal.R calculate.R
 
 ## Make an exponential with parameters matched to the specific lognormal
 exponential.Rout: lognormal.Rout
@@ -61,7 +61,7 @@ lognormal.ga.Rout: lognormal.Rout gamma.R
 	$(run-R)
 
 lognormal.filtered.Rout: filtered.R
-means.filtered.Rout: lognormal.Rout calculate.R funhist.Rout means.R
+means.filtered.Rout: lognormal.Rout funhist.Rout means.R
 	$(run-R)
 means.filtered.wide.pdf:
 
@@ -119,16 +119,17 @@ genExp.Rout: genExp.R
 ######################################################################
 
 # DSW's examples (in DSW's style)
+# deprecated
 
-example.Rout: Flu.Rout example.R
+# example.Rout: Flu.Rout example.R
 
-KW_comparison.Rout: euler.Rout KW_comparison.R
+# KW_comparison.Rout: euler.Rout KW_comparison.R
 
-KW_contour.Rout: XN.Rout KW_contour.R
+# KW_contour.Rout: XN.Rout KW_contour.R
 
-emd_log.Rout: emd_log.R
+# emd_log.Rout: emd_log.R
 
-KW_rabies.Rout: KW_rabies.R
+# KW_rabies.Rout: KW_rabies.R
 
 # Scripts don't run, or something
 # KW_rabies.Rout: Rabies.Rout gamma.Rout euler.Rout XN.Rout SARSCurve.Rout EbolaCurve.Rout KW_rabies.R
@@ -156,7 +157,7 @@ rabies_corr.Rout: rabies_periods.Rout corr.R
 	$(run-R)
 
 ## General workflow:
-ebola_mle.Rout: lognormal.Rout calculate.R euler.Rout WHO.Rout mle.R gen_mle.R
+ebola_mle.Rout: lognormal.Rout euler.Rout WHO.Rout mle.R gen_mle.R
 	$(run-R)
 
 ##############################
@@ -194,7 +195,7 @@ rabies_mle_curve.Rout: rabies_mle.Rout euler.Rout findrho.R mle_curve.R mle_curv
 chinese.Rout: chinese.R
 
 #### Fancy shaded curves
-ebola_samples.Rout: lognormal.Rout calculate.R euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
+ebola_samples.Rout: lognormal.Rout euler.Rout WHO.Rout mle.Rout gamma_sample.Rout sample_fits.R
 	$(run-R)
 
 ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
