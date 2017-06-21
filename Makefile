@@ -1,6 +1,7 @@
 # Generation_distributions
 
 current: target
+-include target.mk
 
 target pngtarget pdftarget vtarget acrtarget: measles_sample_curve.Rout 
 
@@ -8,8 +9,8 @@ target pngtarget pdftarget vtarget acrtarget: measles_sample_curve.Rout
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md notes.txt
-include stuff.mk
+Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
+include sub.mk
 # include $(ms)/perl.def
 
 ##################################################################
@@ -44,6 +45,8 @@ lognormal.Rout: lognormal.R
 
 ## Make an exponential with parameters matched to the specific lognormal
 exponential.Rout: lognormal.Rout
+
+lognormal.ga.Rout: lognormal.Rout gamma.R
 
 ## Make a single-gamma approximation to a simulation
 %.ga.Rout: %.Rout gamma.R
@@ -140,7 +143,12 @@ KW_rabies.Rout: KW_rabies.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
-rabies_drop/%: rabies_drop
+rabies_drop/%: rabies_drop ;
+
+rabies_drop:
+	@echo Why is this a separate directory????
+	@echo Please link it manually
+	exit 1
 
 ## Read the new data
 rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
@@ -232,7 +240,7 @@ gx.flat.Rout: XN.Rout flat.R gx.R
 
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
--include $(ms)/linkdirs.mk
+-include $(ms)/hmodules.mk
 
 -include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
