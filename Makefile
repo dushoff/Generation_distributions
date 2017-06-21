@@ -146,7 +146,7 @@ rabies_drop/%: rabies_drop ;
 
 rabies_drop:
 	@echo Why is this a separate directory????
-	@echo Please link it manually
+	@echo Please link it manually for now
 	exit 1
 
 ## Read the new data
