@@ -18,4 +18,3 @@ gen <- {
 print(gbar <- mean(gen))
 print(sd(gen))
 
-dgen <- gen

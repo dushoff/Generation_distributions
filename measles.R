@@ -1,4 +1,4 @@
-xmax <- 5
+xmax <- 3.2
 ymax <- exp(xmax)
 
 dtype <- "fitted"
@@ -20,4 +20,4 @@ ii <- expression({
     qgamma(q, scale=itime/ishape, shape=ishape)
 })
 
-Reff <- 13
+Reff <- NULL
