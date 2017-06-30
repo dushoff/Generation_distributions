@@ -165,9 +165,6 @@ ebola_normal.Rout: lognormal.ga.Rout normal.R euler.Rout WHO.Rout EbolaCurve.R n
 
 Rabies.Rout: rabies_periods.Rout Rabies.R
 
-# Rabies MLE vs moment curve (rabies_mle_curve.Rout)
-rabies_mle_curve.Rout: Rabies.Rout calculate.R euler.Rout findrho.R mle.Rout mle_curve.R mle_curve_legend.R
-
 # Find rabies mle and make default histogram
 rabies_mle.Rout: Rabies.Rout calculate.R mle.Rout gen_mle.R rabies_hist.R
 	$(run-R)
