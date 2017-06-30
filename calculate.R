@@ -4,8 +4,8 @@ nq <- 10000
 q <- (2*(1:nq)-1)/(2*nq)
 
 gen <- {
-    if (dtype=="emprical") {
-        lat <- sample(lat, size=nq, replace = TRUE)
+    if (dtype=="empirical") {
+        nq <- length(lat)
     } else if (dtype=="fitted") {
         lat <- eval(lat, pars)
         ii <- eval(ii, pars)
