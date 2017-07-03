@@ -232,7 +232,7 @@ gx.flat.Rout: XN.Rout flat.R gx.R
 
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
--include $(ms)/hmodules.mk
+-include $(ms)/modules.mk
 
 -include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
