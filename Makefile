@@ -212,7 +212,6 @@ measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
 
-
 ######################################################################
 
 # JD's approach to KW
