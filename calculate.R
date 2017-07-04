@@ -15,6 +15,7 @@ gen <- {
     runif(nq, min=lat, max=lat+inf)
 }
 
+dgen <- gen
+
 print(gbar <- mean(gen))
 print(sd(gen))
-
