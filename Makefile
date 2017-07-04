@@ -11,6 +11,8 @@ Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
 include sub.mk
 # include $(ms)/perl.def
 
+Sources += $(ms) $(dirs)
+
 ##################################################################
 
 ## Content
