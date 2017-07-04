@@ -69,7 +69,9 @@ means.filtered.wide.pdf:
 exponential.filtered.Rout: exponential.R
 
 # Plain histograms (compare sim and its single-gamma approximation)
+
 lognormal.hist.Rout:
+
 lognormal.ga.hist.Rout:
 %.hist.Rout: %.Rout calculate.R hist.R
 	$(run-R)
