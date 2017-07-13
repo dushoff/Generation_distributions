@@ -4,10 +4,6 @@ ymax <- exp(xmax)
 dtype <- "empirical"
 dname <- "Rabies"
 
-## Rabies blowup; need to refactor all of this!
-# xmax <- 4
-# ymax <- exp(xmax)/4
-
 lat <- inc$val
 lat<- lat[!is.na(lat)]
 

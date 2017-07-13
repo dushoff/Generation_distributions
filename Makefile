@@ -1,16 +1,17 @@
 # Generation_distributions
 
 current: target
-
-target pngtarget pdftarget vtarget acrtarget: rabies_mle_curve.Rout 
+-include target.mk
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md notes.txt
-include stuff.mk
+Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
+include sub.mk
 # include $(ms)/perl.def
+
+Sources += $(ms) $(dirs)
 
 ##################################################################
 
@@ -45,6 +46,8 @@ lognormal.Rout: lognormal.R calculate.R
 ## Make an exponential with parameters matched to the specific lognormal
 exponential.Rout: lognormal.Rout
 
+lognormal.ga.Rout: lognormal.Rout gamma.R
+
 ## Make a single-gamma approximation to a simulation
 %.ga.Rout: %.Rout gamma.R
 	$(run-R)
@@ -68,7 +71,9 @@ means.filtered.wide.pdf:
 exponential.filtered.Rout: exponential.R
 
 # Plain histograms (compare sim and its single-gamma approximation)
+
 lognormal.hist.Rout:
+
 lognormal.ga.hist.Rout:
 %.hist.Rout: %.Rout calculate.R hist.R
 	$(run-R)
@@ -139,7 +144,12 @@ genExp.Rout: genExp.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
-rabies_drop/%: rabies_drop
+rabies_drop/%: rabies_drop ;
+
+rabies_drop:
+	@echo Why is this a separate directory????
+	@echo Please link it manually for now
+	exit 1
 
 ## Read the new data
 rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
@@ -192,7 +202,7 @@ ebola_sample_curve.Rout: ebola_samples.Rout flat.R sample_graph.R
 
 measles.Rout: measles.R
 
-measles_curve.Rout: measles.Rout calculate.R euler.Rout findrho.R gamma.R EbolaCurve.R
+measles_curve.Rout: measles.Rout calculate.R euler.Rout flat.R findrho.R gamma.R EbolaCurve.R
 	$(run-R)
 
 measles_samples.Rout: measles.Rout calculate.R euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
@@ -235,12 +245,9 @@ gx.flat.Rout: XN.Rout flat.R gx.R
 
 ### Makestuff
 
-## Change this name to download a new version of the makestuff directory
-# Makefile: start.makestuff
-
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
--include $(ms)/linkdirs.mk
+-include $(ms)/modules.mk
 
 -include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
