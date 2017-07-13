@@ -96,8 +96,6 @@ EbolaCurve.cex.Rout: lognormal.ga.Rout euler.Rout WHO.Rout cex.R EbolaCurve.R
 EbolaCurve.flat.Rout: lognormal.ga.Rout euler.Rout WHO.Rout flat.R EbolaCurve.R
 	$(run-R)
 
-## Normal curve added to Ebola
-wallingaNormal.Rout: wallingaNormal.R
 
 ## A bunch of curves in the Ebola example (baseplot, discrete WL calculation, seminr, seir, single-gamma. seminr is the best and works fine with integers or not (but we will say that people shouldn't bother with integers)
 ## Also, a new example (flu from WL). We use the second histogram
@@ -206,6 +204,18 @@ measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
 
+#### Normal distribution
+
+wallingaNormal.Rout: wallingaNormal.R
+
+EbolaCurve.flat.Normal.Rout: EbolaCurve.flat.Rout wallingaNormal.Rout normalLines.R
+	$(run-R)
+
+measles_curve.Normal.Rout: measles_curve.Rout wallingaNormal.Rout normalLines.R
+	$(run-R)
+	
+rabiescurve.Normal.Rout: Rabies.Rout calculate.R gamma.R euler.Rout findrho.R EbolaCurve.R wallingaNormal.Rout normalLines.R
+	$(run-R)
 
 ######################################################################
 
