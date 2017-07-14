@@ -1,4 +1,4 @@
-rho <- seq(0.1, xmax, by=0.1)
+rho <- seq(0, xmax, by=0.1)
 ## Scaling by mean generation time 
 baseplot <- function(){
 	plot(rho, EulerCurve(gbar/rho, gen)
