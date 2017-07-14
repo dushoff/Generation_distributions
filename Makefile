@@ -75,7 +75,7 @@ exponential.filtered.Rout: exponential.R
 lognormal.hist.Rout:
 
 lognormal.ga.hist.Rout:
-%.hist.Rout: %.Rout calculate.R hist.R
+%.hist.Rout: %.Rout hist.R
 	$(run-R)
 
 ######################################################################
