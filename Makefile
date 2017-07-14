@@ -78,6 +78,10 @@ lognormal.ga.hist.Rout:
 %.hist.Rout: %.Rout hist.R
 	$(run-R)
 
+## Compare Ebola time distributions for talk
+%.histcomp.Rout: %.Rout histcomp.R
+	$(run-R)
+
 ######################################################################
 
 ## Curves showing approximations across a range
@@ -218,7 +222,7 @@ measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 
 wallingaNormal.Rout: wallingaNormal.R
 
-EbolaCurve.flat.Normal.Rout: EbolaCurve.flat.Rout wallingaNormal.Rout normalLines.R
+EbolaCurve.normal.flat.Rout: wallingaNormal.Rout  lognormal.ga.Rout euler.Rout WHO.Rout flat.R EbolaCurve.R normalLines.R
 	$(run-R)
 
 measles_curve.Normal.Rout: measles_curve.Rout wallingaNormal.Rout normalLines.R
