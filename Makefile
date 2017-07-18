@@ -119,6 +119,9 @@ wallinga.Rout: wallinga.R
 genExp.flat.Rout: flat.R genExp.R
 	$(run-R)
 
+genExp.tikz.Rout: genExp_tikz.R
+	$(run-R)
+
 genExp.Rout: genExp.R
 	$(run-R)
 
