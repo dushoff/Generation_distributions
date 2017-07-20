@@ -1,4 +1,4 @@
-par(cex=1.5)
+par(cex=1.7)
 
 print(hist(dgen
 	, probability=TRUE

@@ -1,1 +1,1 @@
-par(cex=1.4)
+par(cex=1.7)

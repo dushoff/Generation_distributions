@@ -1,6 +1,6 @@
 set.seed(628)
 
-par(cex=1.5)
+par(cex=1.7)
 
 nq <- 1000
 time <- 15
@@ -18,6 +18,7 @@ for(s in 1:length(shapes)){
 		, 	probability=TRUE
 		, main=dname
 		, xlab="Generation interval (days)"
+		, ylab="Density (1/day)"
 		, xlim=c(0, 50)
 		, breaks=seq(0, 150, by=5)
 	))
@@ -27,7 +28,7 @@ for(s in 1:length(shapes)){
 	curve((1+x)
 		, xlim=c(0.1, 2)
 		, ylim=c(1, 5)
-		, xlab = "Exponential growth rate (per month)"
+		, xlab = "Exponential growth rate (per generation)"
 		, ylab = "Effective reproductive number R"
 	)
 

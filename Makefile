@@ -92,6 +92,10 @@ euler.Rout: euler.R
 # Some parameters from the Ebola epidemic
 WHO.Rout: WHO.R
 
+## Not documented, used for talk examples
+gamHist.Rout: par.R gamHist.R
+	$(run-R)
+
 # Generic example that was hijacked for a talk
 lognormal.curve.Rout: curve.R
 %.curve.Rout: %.ga.Rout par.R curve.R

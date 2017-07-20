@@ -28,7 +28,7 @@ par(cex=1.5)
 plot(rho, EulerCurve(gbar/rho, gamgen)
 	, type="l"
 	, ylim=c(1, 5)
-	, xlab = "Exponential growth rate (per month)"
+	, xlab = "Exponential growth rate (per generation)"
 	, ylab = "Effective reproductive number R"
 )
 
