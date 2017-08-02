@@ -17,7 +17,8 @@ curveList <- (curveTab
 print(
 	ggplot(curveList, aes(x=rho, y=R, linetype=kappa))
 	+ geom_line()
-	+ xlab("Relative length of generation interval")
+	+ xlab(expression(Relative~length~of~generation~interval~(rho)))
+	+ ylab(expression(Reproductive~number))
 	+ ylim(c(1, 10))
 	+ scale_linetype_discrete(
 		breaks=rev(c("k1", "k2", "k4", "kx"))

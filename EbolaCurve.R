@@ -4,8 +4,8 @@ baseplot <- function(){
 	plot(rho, EulerCurve(gbar/rho, gen)
 		, type="l"
 		, ylim=c(1, ymax)
-		, xlab = "Rescaled exponential growth rate" 
-		, ylab = "R"
+		, xlab = expression(Relative~length~of~generation~interval~(rho))
+		, ylab = "Reproductive number"
 	)
 }
 
@@ -13,7 +13,10 @@ baseplot <- function(){
 # Blue is the approximations
 baseplot()
 lines(rho, EulerCurve(gbar/rho, gamgen), col="blue")
-points(rho_eff, Reff, pch=19)
+
+pp <- c(19, 17, 15)
+
+points(rho_eff, Reff, pch=pp[1:length(Reff)])
 curve(1+x, add=TRUE, col="blue", lty=3)
 curve(exp(x), add=TRUE, col="blue", lty=3)
 
