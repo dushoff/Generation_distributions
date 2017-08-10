@@ -34,8 +34,9 @@ t <- (0:(finTime*ss))/ss
 i <- i0*exp(t/C)
 
 basePlot(t, i)
-arrowStep(t, i, astart=3, adist=4, asteps=3, ss) 
+arrowStep(t, i, astart=3, adist=4, asteps=3, ss) ## gen length 4/3 days
+text(2.5, 70, paste0("Reproduction number: ", round(exp(4/3/C), 2)))
 
 basePlot(t, i)
-arrowStep(t, i, astart=3, adist=4, asteps=2, ss) 
-
+arrowStep(t, i, astart=3, adist=4, asteps=2, ss) ## gen length 2 days
+text(2.5, 70, paste0("Reproduction number: ", round(exp(2/C), 2)))
