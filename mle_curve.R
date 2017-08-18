@@ -13,7 +13,6 @@ plot(rho, EulerCurve(gbar/rho, gen)
      , xlab = expression(Relative~length~of~generation~interval~(rho))
      , ylab = "Reproductive number"
      , bty = "l"
-     , col="blue"
 )
 
 ltyv <- c(2, 4)
