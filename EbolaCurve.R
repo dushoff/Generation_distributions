@@ -12,7 +12,7 @@ baseplot <- function(){
 # Version with extra curves
 # Blue is the approximations
 baseplot()
-lines(rho, EulerCurve(gbar/rho, gamgen), col="blue")
+lines(rho, GammaCurve(1/gamshape, rho), col="blue")
 
 pp <- c(19, 17, 15)
 
