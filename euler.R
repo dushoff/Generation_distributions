@@ -9,3 +9,7 @@ EulerCurve <- function(CC, tau){
 		return(EulerR(tau, C=cc))
 	})
 }
+
+GammaCurve <- function(kappa, rho) {
+    return((1+kappa*rho)^(1/kappa))
+}
