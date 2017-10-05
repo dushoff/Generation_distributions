@@ -20,4 +20,4 @@ ii <- expression({
     qgamma(q, scale=itime/ishape, shape=ishape)
 })
 
-Reff <- c(12.8, 16)
+Reff <- NULL
