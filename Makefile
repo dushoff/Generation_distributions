@@ -157,10 +157,12 @@ Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
 rabies_drop/%: rabies_drop ;
 
-rabies_drop:
-	@echo Why is this a separate directory????
-	@echo Please link it manually for now
-	exit 1
+ifndef dropdir
+dropdir = ~/Dropbox/rabies
+endif
+rabies_drop: dir=$(dropdir)
+rabies_drop: 
+	$(linkdirname)
 
 ## Read the new data
 rabies_periods.Rout: rabies_drop/rdata_2002_2007.csv rabies_periods.R
