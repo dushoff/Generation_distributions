@@ -9,7 +9,7 @@ current: target
 
 # make files
 
-Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
+Sources = Makefile .ignore README.md sub.mk LICENSE.md notes.txt
 include sub.mk
 # include $(ms)/perl.def
 -include $(ms)/repos.def
@@ -19,8 +19,6 @@ Sources += $(ms) $(dirs)
 ##################################################################
 
 ## Refactoring
-
-gi_approximations.create:
 
 ##################################################################
 
@@ -32,6 +30,7 @@ Sources += $(wildcard *.R)
 
 ## Conceptual picture (idea ripped off from whom?)
 ## If generations are faster, steps are smaller and R0 is lower
+Ignore += *.wide.pdf
 steps.Rout: steps.R
 steps.wide.pdf: steps.R
 
@@ -164,6 +163,7 @@ genExp.Rout: genExp.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
+Ignore += rabies_drop
 rabies_drop/%: rabies_drop ;
 
 ifndef dropdir
@@ -235,6 +235,10 @@ measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
+
+rabies_samples.Rout: Rabies.Rout calculate.R euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
+
+rabies_sample_curve.Rout: rabies_samples.Rout flat.R sample_graph.R
 
 #### Normal distribution
 

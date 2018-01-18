@@ -26,7 +26,7 @@ point_df <- data.frame(
 )
 
 gbar <- mean(gen)
-rho <- seq(0.1, xmax, by=0.1)
+rho <- seq(0.05, xmax, by=0.05)
 
 true_df <- data.frame(
     rho = rho

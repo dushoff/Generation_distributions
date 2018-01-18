@@ -11,9 +11,15 @@ print(ggplot(bind_df, aes(rho, median))
     + stat_function(fun = function(x) x + 1, lty = 3)
     + stat_function(fun = exp, lty = 3)
     + facet_wrap(~n, nrow = 1)
-    + scale_x_continuous(expand = c(0, 0))
+    + scale_x_continuous(expression(Relative~length~of~generation~interval~(rho)), expand = c(0, 0))
+    + scale_y_continuous("Reproductive number")
     + theme(panel.spacing.x = grid::unit(0, "lines"))
     + scale_linetype_manual(values = c(4, 2))
     + scale_color_manual(values=cbPalette)
     + scale_fill_manual(values=cbPalette)
+    + theme(
+        strip.background = element_blank(),
+        panel.grid.minor = element_blank()
+    )
 )
+
