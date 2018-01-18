@@ -236,6 +236,10 @@ measles_sample_curve.Rout: measles_samples.Rout flat.R sample_graph.R
 %_Rout.pdf: %.Rout.pdf
 	$(link) 
 
+rabies_samples.Rout: Rabies.Rout calculate.R euler.Rout mle.Rout gamma_sample.Rout findrho.R sample_fits.R
+
+rabies_sample_curve.Rout: rabies_samples.Rout flat.R sample_graph.R
+
 #### Normal distribution
 
 wallingaNormal.Rout: wallingaNormal.R
