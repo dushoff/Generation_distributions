@@ -1,4 +1,6 @@
 # Generation_distributions
+# Horrible hybrid repo created for the Fogarty talk, and elaborated by Daniel for generation papers
+# Thinking of refactoring into a new repo (since things depend on this one for now)
 
 current: target
 -include target.mk
@@ -10,8 +12,15 @@ current: target
 Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
 include sub.mk
 # include $(ms)/perl.def
+-include $(ms)/repos.def
 
 Sources += $(ms) $(dirs)
+
+##################################################################
+
+## Refactoring
+
+gi_approximations.create:
 
 ##################################################################
 
