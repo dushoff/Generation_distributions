@@ -20,8 +20,6 @@ Sources += $(ms) $(dirs)
 
 ## Refactoring
 
-gi_approximations.create:
-
 ##################################################################
 
 ## Content
