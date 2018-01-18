@@ -163,6 +163,7 @@ genExp.Rout: genExp.R
 Sources += $(wildcard *.csv)
 Hampson =  RabiesIncubation.csv RabiesInfection.csv rabiesData.R
 
+Ignore += rabies_drop
 rabies_drop/%: rabies_drop ;
 
 ifndef dropdir
