@@ -9,7 +9,7 @@ current: target
 
 # make files
 
-Sources = Makefile .gitignore README.md sub.mk LICENSE.md notes.txt
+Sources = Makefile .ignore README.md sub.mk LICENSE.md notes.txt
 include sub.mk
 # include $(ms)/perl.def
 -include $(ms)/repos.def
