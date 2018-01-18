@@ -30,6 +30,7 @@ Sources += $(wildcard *.R)
 
 ## Conceptual picture (idea ripped off from whom?)
 ## If generations are faster, steps are smaller and R0 is lower
+Ignore += *.wide.pdf
 steps.Rout: steps.R
 steps.wide.pdf: steps.R
 
