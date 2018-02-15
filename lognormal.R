@@ -11,6 +11,9 @@ pars <- list(
     ishape = 0.8
 )
 
+## Mean based on quantiles may or may not be better than
+## calculating sdmean, but we don't care because they 
+## are indistinguishable
 lat <- expression({
     lat <- qlnorm(q, sdlog=dshape)
     lat*dtime/mean(lat)
