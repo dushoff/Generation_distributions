@@ -12,9 +12,9 @@ current: target
 Sources = Makefile .ignore README.md sub.mk LICENSE.md notes.txt
 include sub.mk
 # include $(ms)/perl.def
--include $(ms)/repos.def
+## -include $(ms)/repos.def
 
-Sources += $(ms) $(dirs)
+Sources += $(ms)
 
 ##################################################################
 
