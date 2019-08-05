@@ -143,6 +143,13 @@ genExp.Rout: genExp.R
 
 ######################################################################
 
+## Waiting-time distributions
+## Hacked up in Japan
+
+waiting.Rout: waiting.R
+
+######################################################################
+
 # DSW's examples (in DSW's style)
 # deprecated
 
