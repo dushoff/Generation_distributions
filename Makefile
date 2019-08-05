@@ -67,9 +67,13 @@ lognormal.ga.Rout: lognormal.Rout gamma.R
 # funhist has histogram functions
 # filtered.R is expecting calculated objects (Simulations, above)
 
+## Why do we need calculate.R to run instead of cache?
+## Why is there eval weirdness here?
 %.filtered.Rout: %.Rout calculate.R funhist.Rout filtered.R
 	$(run-R)
 
+## If we select smaller dgens (to get a clearer view), we get weird size jumps
+## in the marginal distributions
 lognormal.filtered.Rout: filtered.R
 means.filtered.Rout: lognormal.Rout funhist.Rout means.R
 	$(run-R)

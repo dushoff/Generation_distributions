@@ -12,12 +12,12 @@ rightZones = function()
 	layout(zones, widths=c(1/5,4/5), heights=c(1/5,4/5))
 }
 
-funHist = function(x, f, parms=NULL , finv=NULL, means=TRUE, top=NULL)
+funHist = function(x, f, parms=NULL , finv=NULL, means=TRUE, top=NULL, breaks=30)
 {
 	# Make histogram information
 	y <- f(x, parms)
-	xhist = hist(x, plot=FALSE)
-	yhist = hist(y, plot=FALSE)
+	xhist = hist(x, plot=FALSE, breaks=breaks)
+	yhist = hist(y, plot=FALSE, breaks=breaks)
 
 	# Try to make histograms comparable
 	if(is.null(top)) top = max(c(xhist$counts, yhist$counts))
