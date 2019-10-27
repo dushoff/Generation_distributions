@@ -1,6 +1,7 @@
-# Generation_distributions
+## This is Generic, a screens project directory
 # Horrible hybrid repo created for the Fogarty talk, and elaborated by Daniel for generation papers
-# Thinking of refactoring into a new repo (since things depend on this one for now)
+## May have been refactored some
+## makestuff/project.Makefile
 
 current: target
 -include target.mk
@@ -9,8 +10,7 @@ current: target
 
 # make files
 
-Sources = Makefile .ignore README.md sub.mk LICENSE.md notes.txt
-include sub.mk
+Sources = Makefile README.md LICENSE.md notes.txt
 # include $(ms)/perl.def
 ## -include $(ms)/repos.def
 
@@ -280,11 +280,23 @@ gx.flat.Rout: XN.Rout flat.R gx.R
 
 ######################################################################
 
+vim_session:
+	bash -cl "vmt"
+
+######################################################################
+
 ### Makestuff
 
--include $(ms)/git.mk
--include $(ms)/visual.mk
--include $(ms)/modules.mk
+Sources += Makefile
 
--include $(ms)/wrapR.mk
-# -include $(ms)/oldlatex.mk
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
+
+-include makestuff/os.mk
+-include makestuff/git.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
