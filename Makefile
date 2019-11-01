@@ -91,6 +91,7 @@ lognormal.ga.hist.Rout:
 	$(run-R)
 
 ## Compare Ebola time distributions for talk
+## lognormal.histcomp.Rout: lognormal.Rout histcomp.R
 %.histcomp.Rout: %.Rout histcomp.R
 	$(run-R)
 
@@ -297,6 +298,7 @@ makestuff/Makefile:
 	ls $@
 
 -include makestuff/os.mk
+-include makestuff/wrapR.mk
 -include makestuff/git.mk
 -include makestuff/visual.mk
 -include makestuff/projdir.mk
